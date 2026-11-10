@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stockwatch"
+version = "0.1.0"
+description = "Theo dõi cổ phiếu Việt Nam + phân tích tin tức bằng AI (dự án học tập)"
+requires-python = ">=3.11"
+dependencies = [
+    "pandas>=2.2",
+    "fastapi>=0.115",
+    "uvicorn>=0.30",
+    "sqlalchemy>=2.0",
+    "psycopg[binary]>=3.2",
+]
+
+[project.optional-dependencies]
+# Nguồn dữ liệu VN. Lưu ý: tại thời điểm 2026-11-10 `pip install vnstock` trả về 404 trên PyPI,
+# xem README mục "Cài vnstock" để biết cách xử lý.
+vn = ["vnstock>=3.2"]
+dev = ["pytest>=8", "ruff>=0.6", "httpx>=0.27"]
+
+[project.scripts]
+stockwatch = "stockwatch.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+# Depends(...) trong tham số mặc định là cách dùng chuẩn của FastAPI
+ignore = ["B008"]

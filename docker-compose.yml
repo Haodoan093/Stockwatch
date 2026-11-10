@@ -1,0 +1,22 @@
+# Chạy: docker compose up -d db
+# Mật khẩu dưới đây chỉ dành cho máy dev local; đổi khi deploy ở nơi khác.
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: stockwatch
+      POSTGRES_PASSWORD: stockwatch
+      POSTGRES_DB: stockwatch
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U stockwatch -d stockwatch"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  pgdata:

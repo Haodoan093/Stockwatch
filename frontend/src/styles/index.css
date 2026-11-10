@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+/* Bảng màu kiểu sàn giao dịch: nền tối, xanh = tăng, đỏ = giảm */
+@theme {
+  --color-bg: #0b0e11;
+  --color-panel: #12161c;
+  --color-panel2: #181d25;
+  --color-line: #232a34;
+  --color-ink: #eaecef;
+  --color-mute: #848e9c;
+  --color-up: #0ecb81;
+  --color-down: #f6465d;
+  --color-accent: #3b82f6;
+  --color-warn: #f0b90b;
+  --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Chữ số cùng độ rộng để bảng giá không bị nhảy khi giá đổi */
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-line);
+  border-radius: 4px;
+}

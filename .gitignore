@@ -1,0 +1,22 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Node
+node_modules/
+dist/
+
+# Dữ liệu và bí mật cục bộ (không commit)
+data/
+.env
+.env.local
+*.log
+
+# Công cụ / hệ điều hành
+.deepeval/
+.DS_Store
+Thumbs.db
